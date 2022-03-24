@@ -71,7 +71,7 @@
       </div>
 
       <div class="site-name" title="豆瓣网" style="">豆瓣网</div>
-      <div class="anony-srh">
+      <!-- <div class="anony-srh">
         <form action="https://www.douban.com/search" method="get">
           <span class="inp"
             ><input
@@ -83,15 +83,34 @@
               autocomplete="off"
           /></span>
           <span class="bn"><input type="submit" value="搜索" /></span>
-        </form>
-      </div>
+        </form> </div>-->
+      <el-input
+        class="anony-srh"
+        v-model="input"
+        placeholder="书籍、电影、音乐、小组、小站"
+        type="text"
+      >
+      </el-input>
+      <el-button class="search" type="primary" icon="el-icon-search"
+        >搜索</el-button
+      >
     </div>
+    <RegNew></RegNew>
   </div>
 </template>
 <script>
 import { user } from "../../apis/home";
+import RegNew from "./childComps/annoy-reg-new.vue";
 export default {
   name: "home",
+  data() {
+    return {
+      input: "",
+    };
+  },
+  components: {
+    RegNew,
+  },
   created() {
     user().then((res) => {
       console.log(res);
@@ -101,10 +120,11 @@ export default {
     this.getfor();
   },
   methods: {
+    // 获取循环精灵图
     getfor() {
       var lis = document.getElementsByTagName("li");
-      console.log(lis);
-      console.log(lis.length);
+      // console.log(lis);
+      // console.log(lis.length);
       for (var i = 0; i < lis.length - 1; i++) {
         // console.log(i);
         var index = i * 60;
@@ -150,6 +170,7 @@ export default {
   text-indent: -999em;
 }
 #anony-nav {
+  position: relative;
   color: #111;
   font: 12px Helvetica, Arial, sans-serif;
   line-height: 1.62;
@@ -208,5 +229,21 @@ export default {
   line-height: 20em;
   outline: none;
   vertical-align: middle;
+}
+.site-name {
+  position: relative;
+  float: left;
+  margin-top: 20px;
+}
+.anony-srh {
+  margin-top: 10px;
+  width: 240px;
+  height: 20px;
+  position: relative;
+  float: left;
+}
+.search {
+  margin-top: 10px;
+  height: 40px;
 }
 </style>
