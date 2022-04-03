@@ -4,7 +4,7 @@ export function request(config) {
   const instance = axios.create({
     baseURL: "http://localhost:8080/api",
     // baseURL: "http://152.136.185.210:7878/api/hy66",
-    timeout: 1000,
+    timeout: 10000,
     // headers: {
     //   "content-type": "application/x-www-form-urlencoded",
     // },
@@ -15,9 +15,9 @@ export function request(config) {
     (config) => {
       // console.log(config.url);
       // 给请求添加豆瓣 apikey
-      config.url = config.url.concat(
-        "?apiKey=0df993c66c0c636e29ecbb5344252a4a"
-      );
+      // config.url = config.url.concat(
+      //   "?apiKey=054022eaeae0b00e0fc068c0c0a2102a"
+      // );
       return Promise.resolve(config);
     },
     (err) => {

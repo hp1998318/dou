@@ -335,7 +335,7 @@ export default {
 .account-form-3rd .a1 {
   width: 22px;
   height: 22px;
-  background: url(~assets/weixin.svg);
+  background: url(~assets/img/home/weixin.svg);
 
   background-size: 22px 22px;
   margin-top: 13px;
@@ -344,7 +344,7 @@ export default {
 .account-form-3rd .a2 {
   width: 22px;
   height: 22px;
-  background: url(~assets/weibo.svg);
+  background: url(~assets/img/home/weibo.svg);
   background-size: 22px 22px;
   margin-top: 13px;
   margin-left: 10px;

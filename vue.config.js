@@ -7,7 +7,7 @@ module.exports = {
     proxy: {
       "/api": {
         //  拦截以 /api 开头的接口
-        target: "https://api.douban.com/v2", //设置你调用的接口域名和端口号 别忘了加http
+        target: "https://api.wmdb.tv/api/v1", //设置你调用的接口域名和端口号 别忘了加http
         changeOrigin: true, //这里true表示实现跨域
         secure: true, // 如果是https接口，需要配置这个参数
         pathRewrite: {

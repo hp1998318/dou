@@ -3,22 +3,22 @@
     <div id="anony-nav-banner">
       <h1 id="douban-logo">
         <a href="https://www.douban.com"
-          ><img src="~assets/logo_db@2x.png" alt=""
+          ><img src="~assets/img/home/logo_db@2x.png" alt=""
         /></a>
       </h1>
     </div>
     <div id="anony-nav">
       <div class="anony-nav-links">
         <ul>
-          <li>
-            <a target="_blank" class="lnk-book" href="https://book.douban.com"
+          <li @click="itemClickBook">
+            <!-- <a target="_blank" class="lnk-book" href="https://book.douban.com"
               >豆瓣读书</a
-            >
+            > -->
           </li>
-          <li>
-            <a target="_blank" class="lnk-movie" href="https://movie.douban.com"
+          <li @click="itemClickMovie">
+            <!-- <a target="_blank" class="lnk-movie" href="" 
               >豆瓣电影</a
-            >
+            > -->
           </li>
           <li>
             <a target="_blank" class="lnk-music" href="https://music.douban.com"
@@ -99,10 +99,10 @@
   </div>
 </template>
 <script>
-import { user } from "../../apis/home";
+// import { user } from "../../apis/home";
 import RegNew from "./childComps/annoy-reg-new.vue";
 export default {
-  name: "home",
+  name: "Home",
   data() {
     return {
       input: "",
@@ -112,9 +112,9 @@ export default {
     RegNew,
   },
   created() {
-    user().then((res) => {
-      console.log(res);
-    });
+    // user().then((res) => {
+    //   console.log(res);
+    // });
   },
   mounted() {
     this.getfor();
@@ -134,6 +134,13 @@ export default {
           lis[i].style.backgroundPositionX = "-" + index + "px";
         }
       }
+    },
+
+    itemClickMovie() {
+      this.$router.push("/movie");
+    },
+    itemClickBook() {
+      this.$router.push("/book");
     },
   },
 };
@@ -206,17 +213,17 @@ export default {
   margin: 0 14px 0 0px;
   /* background-color: red; */
   /* overflow: hidden; */
-  background: url(~assets/anony_nav_logo@2x.png) no-repeat;
+  background: url(~assets/img/home/anony_nav_logo@2x.png) no-repeat;
   background-size: 462px 19.5px;
   float: left;
 }
 #read_log {
-  background: url(~assets/ic_read_home_nav@2x.png) no-repeat;
+  background: url(~assets/img/home/ic_read_home_nav@2x.png) no-repeat;
   background-size: 40px 20px;
   background-color: #fff;
 }
 #time_log {
-  background: url(~assets/ic_shijian_home_nav@2x.png) no-repeat;
+  background: url(~assets/img/home/ic_shijian_home_nav@2x.png) no-repeat;
   background-size: 40px 21px;
 }
 .anony-nav-links ul li a {
