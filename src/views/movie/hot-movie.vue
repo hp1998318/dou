@@ -7,7 +7,9 @@
 				<span class="header-link">即将上映</span>
 			</section>
 			<section class="actions">
-				<span class="page-info">{{ pageNum }} / {{ hotMovieChunks.length }}</span>
+				<span class="page-info">
+					{{ pageNum }} / {{ hotMovieChunks.length }}
+				</span>
 				<i class="el-icon-caret-left" v-on:click="toPrevPage" />
 				<i class="el-icon-caret-right" v-on:click="toNextPage" />
 			</section>
@@ -18,7 +20,10 @@
 			indicator-position="none"
 			@change="onPageNumChange"
 		>
-			<el-carousel-item v-for="(item, index) in hotMovieChunks" :key="item.doubanId">
+			<el-carousel-item
+				v-for="(item, index) in hotMovieChunks"
+				:key="item.doubanId"
+			>
 				里面自己写{{ index }}
 			</el-carousel-item>
 		</el-carousel>
