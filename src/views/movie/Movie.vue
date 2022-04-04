@@ -148,7 +148,8 @@
         <el-container>
           <el-main>
             <div class="w1">
-              <div class="w1-header">
+              <HotMovie />
+              <!-- <div class="w1-header">
                 <el-breadcrumb separator-class="el-icon-arrow-right">
                   <el-breadcrumb-item :to="{ path: '/' }"
                     >正在热映</el-breadcrumb-item
@@ -158,15 +159,7 @@
                 </el-breadcrumb>
               </div>
               <div class="w1-main">
-                <el-carousel indicator-position="outside">
-                  <el-carousel-item>
-                    <MovieList
-                      :MovieHot="MovieHot"
-                      :MovieRate="MovieRate"
-                    ></MovieList>
-                  </el-carousel-item>
-                </el-carousel>
-              </div>
+              </div> -->
             </div>
           </el-main>
           <el-aside width="200px">Aside</el-aside>
@@ -178,7 +171,7 @@
 </template>
 <script>
 import { in_theaters } from "@/apis/movie.js";
-import MovieList from "../../components/common/MovieList.vue";
+import HotMovie from './hot-movie.vue';
 
 export default {
   name: "Movie",
@@ -191,62 +184,29 @@ export default {
     };
   },
   components: {
-    MovieList,
+    // MovieList,
+    // MovieListItem,
+    HotMovie,
   },
   created() {
     this.getMovies();
   },
   mounted() {},
   methods: {
-    // /* 获取影片名称 */
-    // getMovieName() {
-    //   in_theaters().then((res) => {
-    //     for (let i = 0; i < res.length; i++) {
-    //       this.MovieName[i] = res[i].data[0].name;
-    //     }
-    //     // console.log(this.MovieName);
-    //   });
-    // },
-    // /* 获取影片图片 */
-    // getMovieImg() {
-    //   in_theaters().then((res) => {
-    //     for (let i = 0; i < res.length; i++) {
-    //       this.MovieImg[i] = res[i].data[0].poster;
-    //     }
-    //     // console.log(this.MovieImg);
-    //   });
-    // },
-    // /* 获取影片评分 */
-    // getMovieRate() {
-    //   in_theaters().then((res) => {
-    //     for (let i = 0; i < res.length; i++) {
-    //       this.MovieRate[i] = res[i].data[0].doubanRating;
-    //     }
-    //     // console.log(this.MovieImg);
-    //   });
-    // },
-
     /* 获取影片 */
     getMovies() {
       in_theaters().then((res) => {
-        for (let i = 0; i < res.length; i++) {
-          this.Movies[i] = res[i].data[0];
-          this.MovieRate[i] = res[i].doubanRating;
-          /* 获取热门电影 */
-          if (i < 5) {
-            this.MovieHot[i] = res[i].data[0];
-          }
-        }
-        // console.log(this.Movies);
-        // console.log(this.MovieHot);
+        res.forEach(({ data, doubanRating }, index) => {
+          this.Movies.push(data[0]);
+          this.MovieRate.push(doubanRating);
+          index < 5 && this.MovieHot.push(data[0])
+        })
       });
     },
     mouseover() {
-      // console.log(1);
       this.isShow = true;
     },
     mouseout() {
-      // console.log(2);
       this.isShow = false;
     },
   },
