@@ -12,7 +12,7 @@
 import MovieListItem from "./MovieListItem.vue";
 // import Vue from "vue";
 export default {
-  name: "MovieList",
+  name: "MovieList5",
   components: {
     MovieListItem,
   },
@@ -35,11 +35,11 @@ export default {
   /* 让弹性盒子在必要的时候拆行 */
   flex-wrap: wrap;
   /*  / space-evenly 均等分    justify-content留白  ！space-around与space-evenly的区别*/
-  justify-content: space-evenly;
+  justify-content: space-around;
   /* 原生 */
   /* padding-bottom: 59px; */
 }
 .movielistitem {
-  margin-top: 0;
+  flex: 20%;
 }
 </style>

@@ -149,17 +149,9 @@
           <el-main>
             <div class="w1">
               <HotMovie />
-              <!-- <div class="w1-header">
-                <el-breadcrumb separator-class="el-icon-arrow-right">
-                  <el-breadcrumb-item :to="{ path: '/' }"
-                    >正在热映</el-breadcrumb-item
-                  >
-                  <el-breadcrumb-item>全部正在热映</el-breadcrumb-item>
-                  <el-breadcrumb-item>即将上映</el-breadcrumb-item>
-                </el-breadcrumb>
-              </div>
-              <div class="w1-main">
-              </div> -->
+            </div>
+            <div class="w2">
+              <recentMovie></recentMovie>
             </div>
           </el-main>
           <el-aside width="200px">Aside</el-aside>
@@ -171,8 +163,8 @@
 </template>
 <script>
 import { in_theaters } from "@/apis/movie.js";
-import HotMovie from './hot-movie.vue';
-
+import HotMovie from "./childCopms/hot-movie.vue";
+import recentMovie from "./childCopms/recent-movie.vue";
 export default {
   name: "Movie",
   data() {
@@ -187,6 +179,7 @@ export default {
     // MovieList,
     // MovieListItem,
     HotMovie,
+    recentMovie,
   },
   created() {
     this.getMovies();
@@ -199,8 +192,8 @@ export default {
         res.forEach(({ data, doubanRating }, index) => {
           this.Movies.push(data[0]);
           this.MovieRate.push(doubanRating);
-          index < 5 && this.MovieHot.push(data[0])
-        })
+          index < 5 && this.MovieHot.push(data[0]);
+        });
       });
     },
     mouseover() {
@@ -288,7 +281,7 @@ export default {
 .domain {
   position: absolute;
   width: 1100px;
-  height: 2400px;
+  height: 100vh;
   margin-left: 200px;
   /* background-color: red; */
 }
@@ -373,6 +366,9 @@ export default {
 
 .w1 .w1-main {
   margin-top: 10px;
+}
+.w2 {
+  height: 513px;
 }
 .el-carousel__item h3 {
   color: #475669;
