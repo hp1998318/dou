@@ -145,7 +145,7 @@
 
     <div class="domain">
       <el-container>
-        <el-container>
+        <el-container class="container2">
           <el-main>
             <div class="w1">
               <HotMovie />
@@ -154,9 +154,54 @@
               <recentMovie></recentMovie>
             </div>
           </el-main>
-          <el-aside width="200px">Aside</el-aside>
+          <el-aside width="300px">
+            <div class="rating_answer">
+              <ul>
+                <li>
+                  <a href="https://blog.douban.com/douban/2015/12/18/3060/"
+                    >豆瓣电影评分八问</a
+                  >
+                </li>
+              </ul>
+            </div>
+            <div class="billboard">
+              <div class="billboard-hd">
+                <h2>
+                  一周排行版
+                  <span>更多榜单》</span>
+                </h2>
+              </div>
+              <div class="billboard-bd">
+                <table>
+                  <tr v-for="(item, index) in Movies.slice(0, 10)" :key="index">
+                    <td class="order">{{ index + 1 }}</td>
+                    <td class="title">
+                      <span>{{ item.name }}</span>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </el-aside>
         </el-container>
-        <el-footer>Footer</el-footer>
+        <el-footer>
+          <span id="icp" class="fleft gray-link">
+            © 2005－2022 douban.com, all rights reserved 北京豆网科技有限公司
+          </span>
+          <span class="fright">
+            <a href="https://www.douban.com/about">关于豆瓣</a>
+            · <a href="https://www.douban.com/jobs">在豆瓣工作</a> ·
+            <a href="https://www.douban.com/about?topic=contactus">联系我们</a>
+            · <a href="https://www.douban.com/about/legal">法律声明</a>
+
+            ·
+            <a href="https://help.douban.com/?app=movie" target="_blank"
+              >帮助中心</a
+            >
+            · <a href="https://www.douban.com/doubanapp/">移动应用</a> ·
+            <a href="https://www.douban.com/partner/">豆瓣广告</a>
+          </span>
+        </el-footer>
       </el-container>
     </div>
   </div>
@@ -196,6 +241,7 @@ export default {
         });
       });
     },
+    /*  */
     mouseover() {
       this.isShow = true;
     },
@@ -349,23 +395,35 @@ export default {
   color: #37a;
   text-decoration: none;
 }
-.el-header,
-.el-footer {
+.el-header {
   background-color: #b3c0d1;
   color: #333;
   text-align: center;
   line-height: 60px;
 }
-
-.el-aside {
-  background-color: #d3dce6;
-  color: #333;
-  text-align: center;
-  line-height: 200px;
+.el-footer {
+  color: #999;
+  padding: 6px 0;
+  margin-top: 40px;
+  overflow: hidden;
+  zoom: 1;
+  border-top: 1px dashed #ddd;
 }
 
-.w1 .w1-main {
-  margin-top: 10px;
+.el-aside {
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  background-color: #fff;
+  color: #333;
+  /* text-align: center; */
+  /* line-height: 200px; */
+}
+.container2 {
+  height: 1100px;
+}
+.w1 {
+  margin-top: 15px;
 }
 .w2 {
   height: 513px;
@@ -384,5 +442,93 @@ export default {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+.rating_answer {
+  width: 300px;
+  height: 43.5px;
+  background-color: #f0f3f5;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+.rating_answer ul li {
+  font-size: 13px;
+  color: #37a;
+  padding-top: 12px;
+  list-style: none;
+}
+.rating_answer ul li a {
+  text-decoration: none;
+}
+.billboard-hd {
+  margin-top: 10px;
+  border-bottom: 1px solid #eaeaea;
+  /* background-color: red; */
+}
+.billboard-hd h2 {
+  /* font-size: 20px; */
+  margin-bottom: 20px;
+  font: 15px Arial, Helvetica, sans-serif;
+}
+.billboard-hd h2 span {
+  font-size: 13px;
+  margin-left: 10px;
+  color: #37a;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.billboard-hd h2 span:hover {
+  color: #fff;
+  background-color: #37a;
+}
+.billboard-bd table {
+  border-collapse: collapse;
+  border: none;
+}
+.billboard-bd table tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.billboard-bd table tr td {
+  padding: 7px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+.order {
+  width: 20px;
+  font-size: 13px;
+  margin-right: 20px;
+}
+.title {
+  width: 290px;
+}
+.title span {
+  font-size: 13px;
+  /* margin-left: 2px; */
+  color: #37a;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.title span:hover {
+  color: #fff;
+  background-color: #37a;
+}
+.fleft {
+  float: left;
+  font-size: 13px;
+}
+.fright {
+  float: right;
+}
+.fright a {
+  text-decoration: none;
+  font-size: 13px;
+  /* margin-left: 2px; */
+  color: #37a;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.fright a:hover {
+  color: #fff;
+  background-color: #37a;
 }
 </style>
